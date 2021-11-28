@@ -1,0 +1,20 @@
+.visible {
+  display: none;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.point {
+  border: 1px solid;
+  width: 170px;
+  height: 62px;
+}
+
+.content {
+  text-align: center;
+  margin: 0;
+  height: 100%;
+}
