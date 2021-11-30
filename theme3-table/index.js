@@ -15,15 +15,28 @@ function render(data) {
   for (let i of data) {
     const clonedTableTemplate = renderForm.cloneNode(true);
 
-    clonedTableTemplate.querySelector(".name").textContent = i.name;
-    clonedTableTemplate.querySelector(".surname").textContent = i.surname;
-    clonedTableTemplate.querySelector(".position").textContent = i.position;
-    clonedTableTemplate.querySelector(".salary").textContent = i.salary;
-    clonedTableTemplate.querySelector(".date").textContent = i.date;
+    clonedTableTemplate.querySelector(".name p").textContent = i.name;
+    clonedTableTemplate.querySelector(".surname p").textContent = i.surname;
+    clonedTableTemplate.querySelector(".position p").textContent = i.position;
+    clonedTableTemplate.querySelector(".salary p").textContent = i.salary;
+    clonedTableTemplate.querySelector(".date p").textContent = i.date;
 
     tableFragment.appendChild(clonedTableTemplate);
   }
   renderPlace.appendChild(tableFragment);
+
+  const arrP = document.querySelectorAll("p");
+
+  const html = `
+  <form class="form visible">
+  <textarea class="textarea"></textarea>
+  <div>
+    <button type="submit" class="saveBtn">save</button>
+    <button type="submit" class="cancelBtn">cancel</button>
+  </div>
+  </form>`;
+
+  arrP.forEach((el) => el.insertAdjacentHTML("afterend", html));
 }
 
 ///////////// работа с блоком
@@ -52,7 +65,6 @@ const cancelLisner = function (e) {
 
 function getInputContent(el) {
   if (el.nodeName === "P") {
-    console.log(baseEl);
     if (baseEl) {
       handler();
       baseEl = null;
